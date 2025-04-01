@@ -34,8 +34,20 @@ void draw(){
   
   //hotbar
   strokeWeight (3);
+  stroke(200);
   fill (74,72,95);
   rect (0,0,1200,110);
+
+    //box
+  strokeWeight(slx);
+  fill(SELCOL);
+  rect(350,20,20,70); //box
+  
+    //slider
+  strokeWeight (4);
+  line(400,60,580,60);
+  fill (200);
+  circle(slideX,60,30);
 
   //color buttons
  tactile(60,30,40);
@@ -71,16 +83,6 @@ void draw(){
  circle (300,80,40);
   
   
-  //box
-  strokeWeight(slx);
-  fill(SELCOL);
-  rect(350,20,20,70); //box
-  
-    //slider
-  strokeWeight (3);
-  line(400,60,580,60);
-  fill (200);
-  circle(slideX,60,30);
 }
 //----------------------------------
 void tactile (int x, int y, int r) {
