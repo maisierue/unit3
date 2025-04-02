@@ -48,6 +48,15 @@ void draw(){
   line(400,60,580,60);
   fill (200);
   circle(slideX,60,30);
+  
+  //rect buttons save
+  rect(900,10,120,40);
+  
+  //rect buttons load
+  rect(900,60,120,40);
+  
+  //rect buttons clear
+  rect(1050,15,100,80);
 
   //color buttons
  tactile(60,30,40);
