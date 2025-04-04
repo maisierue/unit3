@@ -24,18 +24,18 @@ void draw () {
   
   //buttons
   //red
-tactile (100,100,50);
+tactile (100,100,60,40);
     fill (red);
   rect (100,100,60,40);
   
   //orange
-tactile (200,100,50);
+tactile (200,100,60,40);
     fill (orange);
   rect (200,100,60,40);
   
   
   //pink
- tactile (300,100,50);
+ tactile (300,100,60,40);
     fill (lpink);
   rect (300,100,60,40);
   
@@ -46,8 +46,8 @@ tactile (200,100,50);
 }
 //---------------------------
 
-void tactile (int x, int y, int r) {
-    if (dist(x,y,mouseX,mouseY) < r) {
+void tactile (int x, int y, int w, int h) {
+    if (mouseX> x && mouseX < x+w && mouseY > y && mouseY < y+h) {
     stroke(white);
   }
   else {
