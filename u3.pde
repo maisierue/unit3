@@ -1,6 +1,7 @@
 //U3 
 //SOFIE TANG
-
+PImage Bob;
+boolean BobOn;//true or false
 float slideX;
 float slx = 0;
 
@@ -23,15 +24,22 @@ void setup(){
  background (235);
  strokeWeight(2);
  stroke(150);
+ Bob = loadImage("Bob.png");
+ BobOn = false;
   
 //slider
   slideX = 480;  
   slx = 0;
-  
 }
 
 void draw(){
-  
+//BOBBBBBB!!1
+image(Bob, 50, 50);
+strokeWeight(2);
+fill(200);
+ rect(600,10,120,40);
+
+
   //hotbar
   strokeWeight (3);
   stroke(200);
@@ -50,13 +58,26 @@ void draw(){
   circle(slideX,60,30);
   
   //rect buttons save
+  rectactile(900,10,120,40);
+    fill (200);
   rect(900,10,120,40);
+      fill (200);
+  fill (70);
   
   //rect buttons load
+  rectactile(900,60,120,40);
+    fill (200);
   rect(900,60,120,40);
+  textSize(30);
+  fill (70);
   
   //rect buttons clear
+  rectactile(1050,15,100,80);
+    fill (200);
   rect(1050,15,100,80);
+  textSize(25);
+  fill (70);
+  text("CLEAR",1060,67);
 
   //color buttons
  tactile(60,30,40);
@@ -91,23 +112,43 @@ void draw(){
  fill (beige);
  circle (300,80,40);
   
-  
 }
-//----------------------------------
+//----------------------------------circle outline
 void tactile (int x, int y, int r) {
     if (dist(x,y,mouseX,mouseY) < r) {
     stroke(white);
-  }
+}
   else {
     stroke (200);
   }
 }
-//---------------------------
-
-
-
-
+//--------------------------------rectangle outline
+void rectactile (int x, int y, int w, int h){
+      if (mouseX> x && mouseX <x+w && mouseY > y && mouseY<y+h){
+      stroke(white);
+}
+  else {
+    stroke (200);
+  }
+}
+//-------------------------
 void mouseReleased(){
+  
+  //bob
+ 
+  //rect buttons save
+ // if (mouseX> 900 && mouseX <1120 && mouseY > 10 && mouseY< 50) {
+  //  background (235);
+//  }
+  
+  //rect buttons load
+ // rect(900,60,120,40);
+  
+  //rect buttons clear
+    if (mouseX> 1050 && mouseX <1150 && mouseY > 15 && mouseY<95) {
+    background (235);
+  }
+
   
   //red
   if (dist(60,30,mouseX,mouseY) < 20) {
@@ -152,11 +193,18 @@ ctrlslide();
 
 //slider
 void mouseDragged(){
-ctrlslide();
+  //BOB
+  if (BobON == false){
+ctrlslide();  //drawing
 strokeWeight(slx);
 stroke(SELCOL);
 line(pmouseX, pmouseY, mouseX, mouseY);
 
+}
+else{
+  image (Bob,mouseX, mouseY, 100,100);
+  
+}
 }
 
 
