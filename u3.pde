@@ -34,7 +34,6 @@ void setup() {
 }
 
 void draw() {
-
   //hotbar
   strokeWeight (3);
   stroke(200);
@@ -53,70 +52,68 @@ void draw() {
   circle(slideX, 60, 30);
 
   //rect buttons save
-  rectactile(900, 10, 120, 40);
-  fill (200);
-  rect(900, 10, 120, 40);
+  rectButton(900, 10, 120, 40);
   textSize(20);
   fill (70);
   text("SAVE", 935, 40);
+  if (mouseX>900 && mouseX< 1120 && mouseY > 10 && mouseY< 40){
+   selectOutput ("Choose a name for your new image file", "saveImage");
+  }
 
   //rect buttons load
-  rectactile(900, 60, 120, 40);
-  fill (200);
-  rect(900, 60, 120, 40);
+  rectButton(900, 60, 120, 40);
   textSize(20);
   fill (70);
   text("LOAD", 930, 90);
+    if (mouseX>900 && mouseX< 1120 && mouseY > 40 && mouseY< 60){
+   selectInput ("Select an image to load", "openImage");
+  }
 
   //rect buttons clear
-  rectactile(1050, 15, 100, 80);
-  fill (200);
-  rect(1050, 15, 100, 80);
+  rectButton(1050, 15, 100, 80);
   textSize(25);
   fill (70);
   text("CLEAR", 1060, 67);
 
   //color buttons
-  tactile(60, 30, 40);
-  fill (red);
-  circle (60, 30, 40);
-
-  tactile(140, 30, 40);
-  fill (orange);
-  circle (140, 30, 40);
-
-  tactile(220, 30, 40);
-  fill (lpink);
-  circle (220, 30, 40);
-
-  tactile(300, 30, 40);
-  fill (pink);
-  circle (300, 30, 40);
-
-  tactile(60, 80, 40);
-  fill (blue);
-  circle (60, 80, 40);
-
-  tactile(140, 80, 40);
-  fill (green);
-  circle (140, 80, 40);
-
-  tactile(220, 80, 40);
-  fill (yellow);
-  circle (220, 80, 40);
-
-  tactile(300, 80, 40);
-  fill (beige);
-  circle (300, 80, 40);
+  circleButton(red,60, 30, 40);
+  circleButton(orange,140, 30, 40);
+  circleButton(lpink,220, 30, 40);
+  circleButton(pink,300, 30, 40);
+  circleButton(blue,60, 80, 40);
+  circleButton(green,140, 80, 40);
+  circleButton(yellow,220, 80, 40);
+  circleButton(beige, 300, 80, 40);
 
   //BOBBBBBB!!1
-  rect(750, 10, 90, 90);
+  rectButton(750, 10, 90, 90);
   image(Bob, 750, 10, 90, 90);
   strokeWeight(2);
   fill(200);
 }
+
+void saveImage(File f) {//canceled image
+  if (f != null)  {
+    PImage canvas = get ( 71,1,width-71, height-1);
+    canvas.save(f.getAbsolutePath());
+  }}
+
+
+void rectButton (float x, float y, float w, float h){
+  rectactile(x, y, w, h);
+  fill (200);
+  rect(x, y, w, h);
+}
+
+void circleButton (color c, float x, float y, float d){
+  tactile(x, y, d);
+  fill (c);
+  circle (x, y, d);
+}
+
+
 //----------------------------------circle outline
-void tactile (int x, int y, int r) {
+void tactile (float x, float y, float r) {
   if (dist(x, y, mouseX, mouseY) < r) {
     stroke(white);
   } else {
@@ -124,7 +121,7 @@ void tactile (int x, int y, int r) {
   }
 }
 //--------------------------------rectangle outline
-void rectactile (int x, int y, int w, int h) {
+void rectactile (float x, float y, float w, float h) {
   if (mouseX> x && mouseX <x+w && mouseY > y && mouseY<y+h) {
     stroke(white);
   } else {
