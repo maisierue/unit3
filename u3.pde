@@ -16,7 +16,6 @@ color green = #B1D7B4;
 color yellow = #FFF0BD;
 color blue = #D2E0FB;
 color white = #FFFFFF;
-
 //selection de couleur
 color SELCOL;
 
@@ -40,13 +39,11 @@ void draw() {
   fill (74, 72, 95);
   rect (0, 0, 1200, 110);
 
-  //box
-  strokeWeight(slx);
+  strokeWeight(slx); //box
   fill(SELCOL);
   rect(350, 20, 20, 70); //box
 
-  //slider
-  strokeWeight (4);
+  strokeWeight (4); //slider
   line(400, 60, 580, 60);
   fill (200);
   circle(slideX, 60, 30);
@@ -56,18 +53,13 @@ void draw() {
   textSize(20);
   fill (70);
   text("SAVE", 935, 40);
-  if (mouseX>900 && mouseX< 1120 && mouseY > 10 && mouseY< 40){
-   selectOutput ("Choose a name for your new image file", "saveImage");
-  }
+
 
   //rect buttons load
   rectButton(900, 60, 120, 40);
   textSize(20);
   fill (70);
   text("LOAD", 930, 90);
-    if (mouseX>900 && mouseX< 1120 && mouseY > 40 && mouseY< 60){
-   selectInput ("Select an image to load", "openImage");
-  }
 
   //rect buttons clear
   rectButton(1050, 15, 100, 80);
@@ -86,31 +78,31 @@ void draw() {
   circleButton(beige, 300, 80, 40);
 
   //BOBBBBBB!!1
+      if (BobON == false) {
+ fill(red);
+ } else {
+ fill(200);
+ }
+  
   rectButton(750, 10, 90, 90);
   image(Bob, 750, 10, 90, 90);
   strokeWeight(2);
-  fill(200);
+
 }
 
-void saveImage(File f) {//canceled image
-  if (f != null)  {
-    PImage canvas = get ( 71,1,width-71, height-1);
-    canvas.save(f.getAbsolutePath());
-  }}
 
-
+//-------------------------
 void rectButton (float x, float y, float w, float h){
   rectactile(x, y, w, h);
-  fill (200);
+  fill (200); // take this off
   rect(x, y, w, h);
 }
-
+//-------------------------
 void circleButton (color c, float x, float y, float d){
   tactile(x, y, d);
   fill (c);
   circle (x, y, d);
 }
-
 
 //----------------------------------circle outline
 void tactile (float x, float y, float r) {
@@ -129,20 +121,37 @@ void rectactile (float x, float y, float w, float h) {
   }
 }
 //-------------------------
-void mouseReleased() {
+void saveImage(File f) {//canceled image
+  if (f != null)  {
+    PImage canvas = get ( 71,1,width-71, height-1);
+    canvas.save(f.getAbsolutePath());
+  }}
+//-------------------------
+void openImage(File f) {
+  if (f != null) {
+    int n = 0;
+    while (n<100) {
+      PImage pic = loadImage(f.getPath());
+      image(pic,0,0);
+      n= n + 1;
+    }}}
+
+//-------------------------
+void mouseReleased(){
+  //load button
+      if (mouseX>900 && mouseX< 1020 && mouseY > 60 && mouseY< 100){
+   selectInput ("Select an image to load", "openImage");
+  }
+  
+  //save button
+    if (mouseX>900 && mouseX< 1020 && mouseY > 10 && mouseY< 50){
+   selectOutput ("Choose a name for your new image file", "saveImage");
+  }
 
   //bob
   if (mouseX>750 && mouseX <930 && mouseY > 10 && mouseY < 100) {
     BobON = !BobON;
   }
-
-  //rect buttons save
-  // if (mouseX> 900 && mouseX <1120 && mouseY > 10 && mouseY< 50) {
-  //  background (235);
-  //  }
-
-  //rect buttons load
-  // rect(900,60,120,40);
 
   //rect buttons clear
   if (mouseX> 1050 && mouseX <1150 && mouseY > 15 && mouseY<95) {
@@ -185,10 +194,7 @@ void mouseReleased() {
   }
 }
 //---------------------------
-
-
-//slider
-void mouseDragged() {
+void mouseDragged() { //slider
   //BOB
       ctrlslide();  
   if (BobON == false) {
@@ -200,8 +206,7 @@ void mouseDragged() {
     image (Bob, mouseX, mouseY, slx*10, slx*10);
   }
 }
-
-
+//-------------------------
 void ctrlslide() {
   if (mouseX > 400 && mouseX < 580 && mouseY>40 && mouseY< 80) {
     slideX = mouseX;
