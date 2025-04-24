@@ -49,6 +49,7 @@ void draw() {
   circle(slideX, 60, 30);
 
   //rect buttons save
+  fill (200);
   rectButton(900, 10, 120, 40);
   textSize(20);
   fill (70);
@@ -56,12 +57,14 @@ void draw() {
 
 
   //rect buttons load
+  fill (200);
   rectButton(900, 60, 120, 40);
   textSize(20);
   fill (70);
   text("LOAD", 930, 90);
 
   //rect buttons clear
+  fill (200);
   rectButton(1050, 15, 100, 80);
   textSize(25);
   fill (70);
@@ -79,9 +82,9 @@ void draw() {
 
   //BOBBBBBB!!1
       if (BobON == false) {
- fill(red);
- } else {
  fill(200);
+ } else {
+ fill(red);
  }
   
   rectButton(750, 10, 90, 90);
@@ -94,7 +97,7 @@ void draw() {
 //-------------------------
 void rectButton (float x, float y, float w, float h){
   rectactile(x, y, w, h);
-  fill (200); // take this off
+//  fill (200); // take this off
   rect(x, y, w, h);
 }
 //-------------------------
@@ -152,6 +155,7 @@ void mouseReleased(){
   if (mouseX>750 && mouseX <930 && mouseY > 10 && mouseY < 100) {
     BobON = !BobON;
   }
+  
 
   //rect buttons clear
   if (mouseX> 1050 && mouseX <1150 && mouseY > 15 && mouseY<95) {
@@ -161,36 +165,44 @@ void mouseReleased(){
   //red
   if (dist(60, 30, mouseX, mouseY) < 20) {
     SELCOL = red;
+    BobON = false;
   }
 
   //orange
   if (dist(140, 30, mouseX, mouseY) < 20) {
     SELCOL = orange;
+    BobON = false;
   }
   //lpink
   if (dist(220, 30, mouseX, mouseY) < 20) {
     SELCOL = lpink;
+    BobON = false;
   }
   //pink
   if (dist(300, 30, mouseX, mouseY) < 20) {
     SELCOL = pink;
+    BobON = false;
   }
   //blue
   if (dist(60, 80, mouseX, mouseY) < 20) {
     SELCOL = blue;
+    BobON = false;
   }
   //green
   if (dist(140, 80, mouseX, mouseY) < 20) {
     SELCOL = green;
+    BobON = false;
   }
   //yellow
   if (dist(220, 80, mouseX, mouseY) < 20) {
     SELCOL = yellow;
+    BobON = false;
   }
 
   //beige
   if (dist(300, 80, mouseX, mouseY) < 20) {
     SELCOL = beige;
+    BobON = false;
   }
 }
 //---------------------------
@@ -205,6 +217,7 @@ void mouseDragged() { //slider
   } else {
     image (Bob, mouseX, mouseY, slx*10, slx*10);
   }
+
 }
 //-------------------------
 void ctrlslide() {
